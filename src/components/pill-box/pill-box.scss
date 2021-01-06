@@ -1,0 +1,38 @@
+@import "../../styles/colors";
+
+.PillBox {
+  background-color: $gray;
+  max-width: 30rem;
+  width: calc(100% - 4rem);
+  margin: 3rem 2rem 0 2rem;
+  border-radius: .6rem;
+  min-height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &_pills {
+
+    &--rowUp {
+      border-bottom: dotted 1.5rem $peach;
+      height: 3rem;
+      margin: 0 2rem;
+    }
+
+    &--rowDown {
+      border-top: dotted 1.5rem $peach;
+      height: 3rem;
+      margin: 0 2rem;
+    }
+  }
+
+  &_timeDifference {
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 1rem;
+
+    &_time {
+      font-weight: bold;
+    }
+  }
+}

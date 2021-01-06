@@ -1,0 +1,93 @@
+@import "../../styles/colors";
+
+.Form {
+
+  &_wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0 2rem;
+
+    @media (max-width: 920px) {
+      flex-direction: column;
+    }
+  }
+
+  &_field {
+    &_wrapper {
+      display: flex;
+      margin-bottom: 2rem;
+    }
+
+    &_hint {
+      font-size: .65rem;
+      max-width: 18rem;
+      font-weight: 500;
+
+      &--danger {
+        color: $yellow;
+      }
+    }
+
+    &_multipleCities {
+
+      &_wrapper {
+        margin: 1.5rem 0;
+        background-color: $gray;
+        padding: 1rem;
+        border-radius: .6rem;
+      }
+
+      &_title {
+        margin-bottom: 1rem;
+        font-weight: bold;
+      }
+
+      &_button {
+        padding: .5rem;
+        margin: 0 .5rem .5rem .5rem;
+        background-color: $peach;
+        border-radius: .6rem;
+        border: none;
+        cursor: pointer;
+        color: white;
+
+        &:focus {
+          outline: none;
+        }
+
+      }
+    }
+
+
+    &_icon {
+      width: 2rem;
+      height: 2rem;
+
+      &_wrapper {
+        margin-right: 1rem;
+        background-color: $gray;
+        border-radius: 50%;
+        padding: 0 1.6rem;
+        height: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  &_divider {
+    height: 15rem;
+    width: .5rem;
+    background-color: $navy;
+    margin: 3rem;
+    border-radius: .4rem;
+
+    @media (max-width: 920px) {
+      margin: 0;
+      height: .5rem;
+      width: 15rem;
+      align-self: center;
+    }
+  }
+}

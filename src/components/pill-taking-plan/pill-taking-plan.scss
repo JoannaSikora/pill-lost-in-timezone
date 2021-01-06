@@ -1,0 +1,118 @@
+@import "../../styles/colors";
+
+.PillTakingPlan {
+
+  &_title {
+    margin: 3rem 0 5rem 0;
+  }
+
+  &_wrapper {
+    margin-bottom: 8rem;
+    text-align: center;
+  }
+
+  &_cards {
+    &_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media (max-width: 900px) {
+        flex-direction: column;
+      }
+    }
+
+    &_transition {
+      &_wrapper {
+        font-size: .6rem;
+        margin: 4rem 0;
+
+        @media (max-width: 900px) {
+          transform: rotate(90deg);
+        }
+      }
+
+      &_icon {
+        width: 5rem;
+        fill: #3A4066;
+      }
+    }
+
+    &_card {
+      border-radius: 1rem;
+      background-color: $gray;
+      padding: 3rem;
+      min-height: 20rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 2rem;
+      transition: all .3s ease-in;
+
+      &:hover {
+        transform: scale(1.05)
+      }
+
+      &--arrival {
+        padding-top: 4.5rem;
+        background-color: $light-blue;
+        justify-content: space-between;
+        min-height: 28rem;
+        position: relative;
+
+        &_timezoneChange {
+          font-size: 1rem;
+          color: $yellow;
+        }
+
+        &_icon {
+          width: 5em;
+          height: 5rem;
+          position: absolute;
+          left: calc(50% - 2.5rem);
+          top: -2.5rem;
+          fill: #3A4066;
+          transform: rotate(70deg);
+        }
+      }
+
+      &_title {
+        font-size: 1.8rem;
+      }
+
+      &_time {
+        font-size: 2.2rem;
+        color: $peach;
+        font-weight: bold;
+        margin: 1rem 0 .5rem 0;
+
+        &--arrival {
+          color: $navy;
+          font-size: 3rem;
+        }
+      }
+
+      &_date {
+        font-size: 1.3rem;
+        color: $peach;
+        font-weight: bold;
+
+        &--arrival {
+          color: $navy;
+        }
+      }
+
+      &_place {
+        font-size: .8rem;
+        font-weight: bold;
+      }
+
+      &_otherPlace {
+        margin-top: 2rem;
+        font-size: .8rem;
+      }
+
+    }
+
+  }
+}

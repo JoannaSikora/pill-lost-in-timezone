@@ -1,0 +1,27 @@
+@import "colors";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  font-size: 100%;
+  color: $navy;
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  margin: 2rem;
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
