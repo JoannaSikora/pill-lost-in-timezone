@@ -1,4 +1,4 @@
-import moment from "moment-timezone";
+import moment from 'moment-timezone';
 
 const getLastPillDates = (dayCurrentPillTakingTime, arrivalDateAndTimeWithStandardOffset, dayCurrentPillTakingTimeAtDestination) => {
     let standard;
@@ -12,7 +12,7 @@ const getLastPillDates = (dayCurrentPillTakingTime, arrivalDateAndTimeWithStanda
         destination = dayCurrentPillTakingTimeAtDestination.clone().subtract(1, 'day');
     }
 
-    return {standard, destination};
+    return { standard, destination };
 };
 
 const getFirstPillDates = (dayCurrentPillTakingTime, arrivalDateAndTimeWithStandardOffset, dayCurrentPillTakingTimeAtDestination) => {
@@ -27,19 +27,19 @@ const getFirstPillDates = (dayCurrentPillTakingTime, arrivalDateAndTimeWithStand
         destination = dayCurrentPillTakingTimeAtDestination.clone().add(1, 'day');
     }
 
-    return {standard, destination};
+    return { standard, destination };
 };
 
 export const getArrivalDateAndTimeWithDestinationOffset = (rawArrivalDateAndTime, destinationTimezone) => {
-    return moment.tz(moment(rawArrivalDateAndTime).format("YYYY-MM-DD HH:mm"), destinationTimezone);
+    return moment.tz(moment(rawArrivalDateAndTime).format('YYYY-MM-DD HH:mm'), destinationTimezone);
 };
 
 export const getArrivalDateAndTimeWithStandardOffset = (rawArrivalDateAndTime, destinationTimezone, standardCityTimezone) => {
-    return moment.tz(moment(rawArrivalDateAndTime).format("YYYY-MM-DD HH:mm"), destinationTimezone).clone().tz(standardCityTimezone);
+    return moment.tz(moment(rawArrivalDateAndTime).format('YYYY-MM-DD HH:mm'), destinationTimezone).clone().tz(standardCityTimezone);
 };
 
 export const getPillTakingTime = (standardPillTakingTime) => {
-    return moment(standardPillTakingTime).format("HH:mm");
+    return moment(standardPillTakingTime).format('HH:mm');
 };
 
 export const calculateTimeDifference = (arrivalDateAndTimeWithDestinationOffset, arrivalDateAndTimeWithStandardOffset) => {
@@ -47,7 +47,7 @@ export const calculateTimeDifference = (arrivalDateAndTimeWithDestinationOffset,
 };
 
 export const calculatePillTakingTimes = (arrivalDateTimesWithOffsets, pillTakingTimeInStandardTimezoneFormValue, destinationTimezone, standardTimezone) => {
-    const currentPillTakingTime = moment.tz(arrivalDateTimesWithOffsets.standard.clone().format("DD-MM-YYYY") + ' ' + getPillTakingTime(pillTakingTimeInStandardTimezoneFormValue), "DD-MM-YYYY HH:mm", standardTimezone);
+    const currentPillTakingTime = moment.tz(arrivalDateTimesWithOffsets.standard.clone().format('DD-MM-YYYY') + ' ' + getPillTakingTime(pillTakingTimeInStandardTimezoneFormValue), 'DD-MM-YYYY HH:mm', standardTimezone);
     const currentPillTakingTimeAtDestination = moment(currentPillTakingTime).tz(destinationTimezone);
 
 
@@ -56,5 +56,10 @@ export const calculatePillTakingTimes = (arrivalDateTimesWithOffsets, pillTaking
     const firstPillDateTimeInDestinationTimezone = getFirstPillDates(currentPillTakingTime, arrivalDateTimesWithOffsets.standard, currentPillTakingTimeAtDestination).destination;
     const lastPillDateTimeInDestinationTimezone = getLastPillDates(currentPillTakingTime, arrivalDateTimesWithOffsets.standard, currentPillTakingTimeAtDestination).destination;
 
-    return {lastPillDateTimeInStandardTimezone, firstPillDateTimeInStandardTimezone, lastPillDateTimeInDestinationTimezone, firstPillDateTimeInDestinationTimezone};
+    return {
+        lastPillDateTimeInStandardTimezone,
+        firstPillDateTimeInStandardTimezone,
+        lastPillDateTimeInDestinationTimezone,
+        firstPillDateTimeInDestinationTimezone
+    };
 };

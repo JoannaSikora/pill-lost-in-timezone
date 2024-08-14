@@ -1,19 +1,19 @@
 import './App.scss';
 import React, { useEffect, useState } from 'react';
-import cityTimezones from "city-timezones";
-import { PillBox } from "./pill-box/PillBox";
-import { PillTakingPlan } from "./pill-taking-plan/PillTakingPlan";
-import { Form } from "./form/Form";
-import * as dateTimeService from "../services/dateTimeService";
+import cityTimezones from 'city-timezones';
+import { PillBox } from './pill-box/PillBox';
+import { PillTakingPlan } from './pill-taking-plan/PillTakingPlan';
+import { Form } from './form/Form';
+import * as dateTimeService from '../services/dateTimeService';
 
 const initialValues = {
-    standardCityFormValue: "Warsaw",
-    destinationCityFormValue: "Bangkok",
-    standardCityInfo: {name: "Warsaw", country: "Poland", timezone: "Europe/Warsaw"},
-    destinationCityInfo: {name: "Bangkok", country: "Thailand", timezone: "Asia/Bangkok"},
+    standardCityFormValue: 'Warsaw',
+    destinationCityFormValue: 'Bangkok',
+    standardCityInfo: { name: 'Warsaw', country: 'Poland', timezone: 'Europe/Warsaw' },
+    destinationCityInfo: { name: 'Bangkok', country: 'Thailand', timezone: 'Asia/Bangkok' }
 };
 
-const  App = () => {
+const App = () => {
     const [pillTakingTimeInStandardTimezoneFormValue, setPillTakingTimeInStandardTimezoneFormValue] = useState(new Date());
     const [rawArrivalDateTimeFormValue, setRawArrivalDateTimeFormValue] = useState(new Date());
     const [standardCityFormValue, setStandardCityFormValue] = useState(initialValues.standardCityFormValue);
@@ -42,7 +42,7 @@ const  App = () => {
             setArrivalDateTimesWithOffsets(
                 {
                     destination: dateTimeService.getArrivalDateAndTimeWithDestinationOffset(rawArrivalDateTimeFormValue, destinationCityInfo.timezone),
-                    standard: dateTimeService.getArrivalDateAndTimeWithStandardOffset(rawArrivalDateTimeFormValue,  destinationCityInfo.timezone, standardCityInfo.timezone)
+                    standard: dateTimeService.getArrivalDateAndTimeWithStandardOffset(rawArrivalDateTimeFormValue, destinationCityInfo.timezone, standardCityInfo.timezone)
                 }
             );
 
@@ -67,8 +67,7 @@ const  App = () => {
     }, [areTimezonesSet, pillTakingTimeInStandardTimezoneFormValue, arrivalDateTimesWithOffsets]);
 
     const lookForCitiesWithTimezoneByCity = (e) => {
-        const { target } = e;
-        const { value } = target;
+        const { target: { value } } = e;
 
         return cityTimezones.lookupViaCity(value);
     };
@@ -77,7 +76,7 @@ const  App = () => {
         if (!city) {
             setStandardCityInfo(null);
         } else {
-            setStandardCityInfo({name: city.city, country: city.country, timezone: city.timezone});
+            setStandardCityInfo({ name: city.city, country: city.country, timezone: city.timezone });
         }
     };
 
@@ -101,7 +100,7 @@ const  App = () => {
         if (!city) {
             setDestinationCityInfo(null);
         } else {
-            setDestinationCityInfo({name: city.city, country: city.country, timezone: city.timezone});
+            setDestinationCityInfo({ name: city.city, country: city.country, timezone: city.timezone });
         }
     };
 
@@ -121,8 +120,8 @@ const  App = () => {
         }
     };
 
-  return (
-    <div className="App_wrapper">
+    return (
+        <div className="App_wrapper">
             <h1>Pill lost in timezone</h1>
 
             <Form
@@ -151,25 +150,24 @@ const  App = () => {
                 areTimezonesSet={areTimezonesSet}
             />
 
-        {allTimesAreCalculate &&
-        <PillTakingPlan
-            lastPillDateTimeInStandardTimezone={pillTakingDateTimes.lastPillDateTimeInStandardTimezone}
-            lastPillDateTimeInDestinationTimezone={pillTakingDateTimes.lastPillDateTimeInDestinationTimezone}
-            firstPillDateTimeInDestinationTimezone={pillTakingDateTimes.firstPillDateTimeInDestinationTimezone}
-            firstPillDateTimeInStandardTimezone={pillTakingDateTimes.firstPillDateTimeInStandardTimezone}
+            {allTimesAreCalculate &&
+                <PillTakingPlan
+                    lastPillDateTimeInStandardTimezone={pillTakingDateTimes.lastPillDateTimeInStandardTimezone}
+                    lastPillDateTimeInDestinationTimezone={pillTakingDateTimes.lastPillDateTimeInDestinationTimezone}
+                    firstPillDateTimeInDestinationTimezone={pillTakingDateTimes.firstPillDateTimeInDestinationTimezone}
+                    firstPillDateTimeInStandardTimezone={pillTakingDateTimes.firstPillDateTimeInStandardTimezone}
 
-            arrivalDateTimeWithDestinationOffset={arrivalDateTimesWithOffsets.destination}
-            arrivalDateTimeWithStandardOffset={arrivalDateTimesWithOffsets.standard}
+                    arrivalDateTimeWithDestinationOffset={arrivalDateTimesWithOffsets.destination}
+                    arrivalDateTimeWithStandardOffset={arrivalDateTimesWithOffsets.standard}
 
-            timeDifferenceInMinutes={timeDifferenceInMinutes}
+                    timeDifferenceInMinutes={timeDifferenceInMinutes}
 
-            standardCityInfo={standardCityInfo}
-            destinationCityInfo={destinationCityInfo}
-        />}
+                    standardCityInfo={standardCityInfo}
+                    destinationCityInfo={destinationCityInfo}
+                />}
 
-
-    </div>
-  );
+        </div>
+    );
 };
 
 export default App;

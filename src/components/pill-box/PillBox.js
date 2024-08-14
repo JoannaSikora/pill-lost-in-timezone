@@ -1,5 +1,5 @@
 import React from 'react';
-import "./pill-box.scss"
+import './pill-box.scss'
 import * as placeNameFormatter from '../../services/placeNameFormatter';
 
 export const PillBox = ({ timeDifferenceInMinutes, destinationCityInfo, areTimezonesSet }) => {
@@ -21,7 +21,7 @@ export const PillBox = ({ timeDifferenceInMinutes, destinationCityInfo, areTimez
             return (
                 <React.Fragment>
                     {destinationCityName} is
-                   <strong> {timeDifferenceInHoursAbsAndFloored} {hourOrHours}</strong> {getTimezoneMinutesDiffText()} {isDestinationAheadOrBehindStandardTime}
+                    <strong> {timeDifferenceInHoursAbsAndFloored} {hourOrHours}</strong> {getTimezoneMinutesDiffText()} {isDestinationAheadOrBehindStandardTime}
                 </React.Fragment>
             )
         }
@@ -31,7 +31,7 @@ export const PillBox = ({ timeDifferenceInMinutes, destinationCityInfo, areTimez
         if (timeDifferenceInHours % 1 === 0) {
             return '';
         } else if (Math.abs(timeDifferenceInHours % 1) === 0.5) {
-            return  'and 30 minutes';
+            return 'and 30 minutes';
         } else if (Math.abs(timeDifferenceInHours % 1) === 0.75) {
             return 'and 45 minutes ';
         } else if (Math.abs(timeDifferenceInHours % 1) === 0.25) {
@@ -43,9 +43,9 @@ export const PillBox = ({ timeDifferenceInMinutes, destinationCityInfo, areTimez
         <div className="PillBox">
             <div className="PillBox_pills--rowUp"></div>
             {areTimezonesSet &&
-            <div className="PillBox_timeDifference">
-                {getTimezoneTotalTimeDiffText()}
-            </div>}
+                <div className="PillBox_timeDifference">
+                    {getTimezoneTotalTimeDiffText()}
+                </div>}
             <div className="PillBox_pills--rowDown"></div>
         </div>
     )

@@ -1,10 +1,10 @@
 import React from 'react';
-import DatePicker from "react-datepicker";
-import {ReactComponent as CalendarIcon} from '../../assets/icons/calendar.svg'
-import {ReactComponent as ClockIcon} from '../../assets/icons/clock.svg'
-import {ReactComponent as DestinationIcon} from '../../assets/icons/destination.svg'
-import {ReactComponent as HomeIcon} from '../../assets/icons/home.svg'
-import "./form.scss";
+import DatePicker from 'react-datepicker';
+import { ReactComponent as CalendarIcon } from '../../assets/icons/calendar.svg'
+import { ReactComponent as ClockIcon } from '../../assets/icons/clock.svg'
+import { ReactComponent as DestinationIcon } from '../../assets/icons/destination.svg'
+import { ReactComponent as HomeIcon } from '../../assets/icons/home.svg'
+import './form.scss';
 
 export const Form = ({
                          rawArrivalDateTimeFormValue,
@@ -24,7 +24,7 @@ export const Form = ({
                          destinationCityFormValue,
                          handleDestinationCityFormChange,
                          multipleCitiesChoiceInDestinationTimezone
-}) => {
+                     }) => {
 
     const renderMultipleCitiesChoiceBox = (cities, setCity) => {
         if (cities.length < 2) {
@@ -35,7 +35,7 @@ export const Form = ({
             <div className="Form_field_multipleCities_wrapper">
                 <div className="Form_field_multipleCities_title">Which city did you mean?</div>
                 {cities.map(city => {
-                    return<button
+                    return <button
                         onClick={() => setCity(city)}
                         key={city.city + city.country}
                         className="Form_field_multipleCities_button">{city.city}, {city.country}</button>
@@ -80,20 +80,20 @@ export const Form = ({
 
                 <div className="Form_field_wrapper">
 
-                    <div className="Form_field_icon_wrapper" >
+                    <div className="Form_field_icon_wrapper">
                         <HomeIcon className="Form_field_icon" />
                     </div>
 
-                        <div className="form_wrapper">
-                            <label htmlFor="your-city" className="form_label">YOU ARE IN:</label>
-                            <input
-                                id="your-city"
-                                required
-                                value={standardCityFormValue}
-                                onChange={(e) => handleStandardCityFormChange(e)}
-                                className="form_control" />
-                            {renderHint(standardCityInfo)}
-                        </div>
+                    <div className="form_wrapper">
+                        <label htmlFor="your-city" className="form_label">YOU ARE IN:</label>
+                        <input
+                            id="your-city"
+                            required
+                            value={standardCityFormValue}
+                            onChange={(e) => handleStandardCityFormChange(e)}
+                            className="form_control" />
+                        {renderHint(standardCityInfo)}
+                    </div>
 
                 </div>
 
@@ -105,7 +105,8 @@ export const Form = ({
                     </div>
 
                     <div className="form_wrapper">
-                        <label htmlFor="pill-taking-time" className="form_label">YOU ARE NORMALLY TAKING YOUR PILL AT:</label>
+                        <label htmlFor="pill-taking-time" className="form_label">YOU ARE NORMALLY TAKING YOUR PILL
+                            AT:</label>
                         <DatePicker
                             id="pill-taking-time"
                             required
@@ -154,7 +155,8 @@ export const Form = ({
                     </div>
 
                     <div className="form_wrapper">
-                        <label htmlFor="destination-arrival-time" className="form_label">YOU WILL ARRIVE THERE AT (in destination local time):</label>
+                        <label htmlFor="destination-arrival-time" className="form_label">YOU WILL ARRIVE THERE AT (in
+                            destination local time):</label>
                         <DatePicker
                             id="destination-arrival-time"
                             required
@@ -170,9 +172,7 @@ export const Form = ({
                         <span className="Form_field_hint">Hint: If you are travelling by plane time on the ticket is usually the time in local destination time</span>
                     </div>
                 </div>
-
             </div>
-
         </div>
 
     )
